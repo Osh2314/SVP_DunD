@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     public GameObject panel_Play_Pause;
@@ -105,6 +105,9 @@ public class UIManager : MonoBehaviour
         text_ObjToolTipValue.text = selectObjToolTip;
     }
 
+    public void LoadSceneWithName(string value) {
+        SceneManager.LoadScene(value);
+    }
     /// <summary>
     /// 해당 targetUIText의 text를 str변수의 값으로 바꾸고 시간 변수에 따라 targetUIText가 보이지 않게된다
     /// </summary>

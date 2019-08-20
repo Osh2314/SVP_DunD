@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     private bool canPausePanelActive = true;
     private IEnumerator DefenseStartCoroutine;
-    private bool isDefenseStart=false;
     [SerializeField]
     private EnemySpowner enemySpowner;
     //**************************************************************
@@ -220,6 +219,8 @@ public class GameManager : MonoBehaviour
         player.Respown();
 
         StartCoroutine(ResetScene());
+        DefenseStartCoroutine=DefenseStart(); //코루틴의 진행 상황을 리셋한다
+        StopCoroutine(DefenseStartCoroutine);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
 
         UIManager.Instance.button_Play_GameStart.gameObject.SetActive(true);

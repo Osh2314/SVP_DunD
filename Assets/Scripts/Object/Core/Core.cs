@@ -61,6 +61,8 @@ public class Core : MonoBehaviour
     {
         UIManager.Instance.panel_GameOver.SetActive(true);
         Time.timeScale = 0;
+        
         //여기에 코어 파괴 애니메이션 StartCoroutine(STATE_DEAD());
     }
+
 }
