@@ -5,9 +5,12 @@ using UnityEngine;
 public class Trap_Fire : MonoBehaviour
 {
     public GameObject Fire;
+
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         StartCoroutine(Burn());
     }
 
@@ -25,6 +28,7 @@ public class Trap_Fire : MonoBehaviour
             {
                 Fire.SetActive(false);
                 yield return new WaitForSeconds(4f);
+                anim.SetTrigger("Fire");
                 Fire.SetActive(true);
                 yield return new WaitForSeconds(2f);
 

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 6814874405575226879}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.3, y: 0.6099885, z: 1}
+  m_LocalScale: {x: 1.7737501, y: 0.6099885, z: 1}
   m_Children: []
   m_Father: {fileID: 8839664516446009534}
   m_RootOrder: 0
@@ -139,7 +139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8839664516446009523}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.04, y: -2.94, z: -9.859375}
+  m_LocalPosition: {x: -5.04, y: -2.94, z: 0}
   m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_Children:
   - {fileID: 1710157711630301961}
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 74e704a8595f99041a045f3b1c830c65, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -214,7 +214,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &8839664516446009522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,11 +227,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2efa0f4312f033041ab48991f7b830d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HPBar: {fileID: 0}
   Fire: {fileID: 8960283117156854719, guid: 62a6a354924acd04fa0dd58357bf1b51, type: 3}
   speed: 3
   spinforce: 10000
   dropGoldValue: 10
-  hp: 40
+  hp: 0
+  Maxhp: 40
   state: 0
   isSeeLeft: 0
   Blessing: {fileID: 1876260280200107867, guid: 3e7f3f37a0d6e0744a6bdfd593e1b003,

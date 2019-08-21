@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 1463035112390889615}
   - component: {fileID: 1463035112390889614}
   - component: {fileID: 1463035112390889601}
+  - component: {fileID: 1667893373}
   m_Layer: 8
   m_Name: Enemy_Assassin
   m_TagString: Enemy
@@ -139,7 +140,7 @@ Transform:
   m_GameObject: {fileID: 1463035112390889603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.536813, y: -3.2201917, z: 0}
-  m_LocalScale: {x: 0.8573438, y: 1.625, z: 1}
+  m_LocalScale: {x: 1.7, y: 1.7, z: 1}
   m_Children:
   - {fileID: 1463035112595262682}
   - {fileID: 1463035112456953469}
@@ -184,8 +185,8 @@ SpriteRenderer:
   m_SortingLayerID: 1873416917
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4967ca893ebebce45850128b48ea65f7, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: add096bd492482748b0ccef99b202ec9, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -207,18 +208,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ca6b7df304171439de00a819f67412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HPBar: {fileID: 0}
   Fire: {fileID: 8960283117156854719, guid: 62a6a354924acd04fa0dd58357bf1b51, type: 3}
   speed: 3
   spinforce: 10000
   dropGoldValue: 10
   hp: 40
+  Maxhp: 40
   state: 0
-  isSeeRight: 0
+  isSeeLeft: 1
   Knife: {fileID: 8936827094054866678, guid: 05d00a191ee65734c84f9f92c54ef522, type: 3}
   Cut: {fileID: 8967367385279062361, guid: d6ac0ae550cf33d43856cdf425664104, type: 3}
   knifespeed: 1500
   cutspeed: 3
-  atkpoint: 0
+  isAttacking: 0
 --- !u!50 &1463035112390889614
 Rigidbody2D:
   serializedVersion: 4
@@ -239,7 +242,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!61 &1463035112390889601
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -257,7 +260,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -266,6 +269,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &1667893373
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463035112390889603}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a788949104f5bbd469ae45c81f363f94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1463035112456953468
 GameObject:
   m_ObjectHideFlags: 0

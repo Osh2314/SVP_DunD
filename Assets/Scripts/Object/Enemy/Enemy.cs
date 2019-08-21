@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Enemy : MonoBehaviour
 {
+    public Image HPBar;
     public GameObject Fire;
     public float speed;
     public float spinforce = 10000;
     public int dropGoldValue = 10;
-    public int Hp
+    public float Hp
     {
         get
         {
@@ -25,11 +27,15 @@ public abstract class Enemy : MonoBehaviour
             {
                 StartCoroutine(State_Dead());
             }
+            HPBar.fillAmount = hp/Maxhp;
             Debug.Log(gameObject.name + " hp : " + Hp);
         }
     }
     [SerializeField]
-    private int hp = 40;
+    private float hp = 40;
+    [SerializeField]
+    private float Maxhp = 40;
+
 
     public enum State { IDLE, MOVE, STUN, DAMAGED, ATTACK, DEAD};
     public State state = State.IDLE;
@@ -48,15 +54,20 @@ public abstract class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         SetfollowTarget(GameManager.Instance.core.gameObject);
         StartCoroutine(State_Idle());
+
+        hp = Maxhp;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (isSeeLeft == true)
+        {
             transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
         else
             transform.localEulerAngles = new Vector3(0, 180, 0);
+
     }
 
     public void SetfollowTarget(GameObject newTarget)
@@ -82,7 +93,7 @@ public abstract class Enemy : MonoBehaviour
     public IEnumerator State_Move()
     {
         state = State.MOVE;
-        anim.SetTrigger("Enemy_Move");
+        anim.SetBool("Enemy_Attack", false);
 
 
         Vector3 dir = followTarget.transform.position - transform.position;
@@ -108,18 +119,18 @@ public abstract class Enemy : MonoBehaviour
 
     public IEnumerator State_Damaged()
     {
-        state = State.DAMAGED;
+        //state = State.DAMAGED;
         anim.SetTrigger("Enemy_Damaged");
 
-        while (state == State.DAMAGED)
-        {
-            //피격 애니메이션이 끝났다면
-            if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
-                break;
-            yield return null;
-        }
-        if(state==State.DAMAGED)
-            StartCoroutine(State_Move());
+        //while (state == State.DAMAGED)
+        //{
+        //    //피격 애니메이션이 끝났다면
+        //    if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f)
+        //        break;
+        //    yield return null;
+        //}
+        //if(state==State.DAMAGED)
+        //    StartCoroutine(State_Move());
         yield break;
     }
     public IEnumerator State_Stun(float second)

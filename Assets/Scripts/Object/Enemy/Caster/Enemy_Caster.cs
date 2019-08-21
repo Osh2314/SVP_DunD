@@ -32,14 +32,15 @@ public class Enemy_Caster : Enemy
 
         if (isAttacking == false)
         {
-            anim.SetTrigger("Enemy_Attack");
-            //StartCoroutine(Atk());
             isAttacking = true;
 
             while (state == State.ATTACK)
             {
+            anim.SetBool("Enemy_Attack", true);
                 Instantiate(Blessing, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(1f);
+                anim.SetBool("Enemy_Attack", false);
+                yield return new WaitForSeconds(2f);
             }
             isAttacking = false;
             yield break;

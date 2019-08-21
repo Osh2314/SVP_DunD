@@ -7,9 +7,12 @@ public class Trap_BigThornFloor : MonoBehaviour
     public GameObject Thron1;
     public GameObject Thron2;
     public GameObject Thron3;
+
+    Animator anim;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         StartCoroutine(Thorn());
     }
 
@@ -29,10 +32,11 @@ public class Trap_BigThornFloor : MonoBehaviour
                 Thron2.gameObject.SetActive(false);
                 Thron3.gameObject.SetActive(false);
                 yield return new WaitForSeconds(3f);
+                anim.SetTrigger("Trap");
                 Thron1.gameObject.SetActive(true);
                 Thron2.gameObject.SetActive(true);
                 Thron3.gameObject.SetActive(true);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(1f);
             }
             else
             {

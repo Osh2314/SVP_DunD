@@ -5,10 +5,14 @@ using UnityEngine;
 public class Tower_Fire : MonoBehaviour
 {
     public int amount;
+
+    Animator anim;
+    private Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,8 +25,16 @@ public class Tower_Fire : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            rigid.constraints = RigidbodyConstraints2D.FreezeAll;
+            anim.SetTrigger("Attack");
             Enemy enemy = collision.GetComponent<Enemy>();
             enemy.StartCoroutine(enemy.Burn(amount));
         }
+    }
+
+    IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 }

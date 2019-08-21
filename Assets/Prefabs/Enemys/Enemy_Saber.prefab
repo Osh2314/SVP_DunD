@@ -123,6 +123,7 @@ MonoBehaviour:
   spinforce: 10000
   dropGoldValue: 10
   hp: 10
+  Maxhp: 40
   state: 0
   isSeeLeft: 1
   sword: {fileID: 3719639794423114151}

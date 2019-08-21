@@ -45,7 +45,7 @@ public class Tower : MonoBehaviour
             Rigidbody2D createdRigid;
             Vector2 lookDir = enemyPos - transform.position;
             lookDir.Normalize();
-            createdObject = Instantiate(Attack, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.FromToRotation(Vector3.right, lookDir));
+            createdObject = Instantiate(Attack, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.FromToRotation(Vector3.left, lookDir));
             createdRigid = createdObject.GetComponent<Rigidbody2D>();
             createdRigid.AddForce(lookDir * atkspeed);
             yield return new WaitForSeconds(cooldown);

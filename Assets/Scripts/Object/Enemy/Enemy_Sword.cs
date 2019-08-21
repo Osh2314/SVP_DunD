@@ -38,7 +38,7 @@ public class Enemy_Sword : Enemy
         
         if (isAttacking == false)
         {
-            anim.SetTrigger("Enemy_Attack");
+            anim.SetBool("Enemy_Attack",true);
             //StartCoroutine(Atk());
             isAttacking = true;
 
