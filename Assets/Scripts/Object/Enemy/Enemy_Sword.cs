@@ -35,9 +35,10 @@ public class Enemy_Sword : Enemy
         else
             isSeeLeft = true;
         state = State.ATTACK;
-        anim.SetTrigger("Enemy_Attack");
+        
         if (isAttacking == false)
         {
+            anim.SetTrigger("Enemy_Attack");
             //StartCoroutine(Atk());
             isAttacking = true;
 
