@@ -8,25 +8,31 @@ public abstract class Enemy : MonoBehaviour
     public float speed;
     public float spinforce = 10000;
     public int dropGoldValue = 10;
-    public enum State { IDLE, MOVE, STUN, ATTACK, DEAD};
+    public enum State { IDLE, MOVE, STUN, DAMAGED, ATTACK, DEAD};
     public State state = State.IDLE;
 
     GameObject createObject;
     protected Rigidbody2D rigid;
     protected Vector3 playerPos;
+    protected Animator anim;
 
     private int burncount = 0;
+    public bool isSeeRight = false;
     // Start is called before the first frame update
     protected void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         StartCoroutine(State_Idle());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isSeeRight == true)
+            transform.localEulerAngles = new Vector3(0, 180, 0);
+        else
+            transform.localEulerAngles = new Vector3(0, 0, 0);
     }
 
     public void GetPlayerPosition(Vector3 pos)
@@ -37,7 +43,7 @@ public abstract class Enemy : MonoBehaviour
     public IEnumerator State_Idle() {
         state = State.IDLE;
 
-        //ThisAnimator.SetTrigger((int)State.IDLE);
+        
 
         while (state == State.IDLE) {
             //플레이어
@@ -54,10 +60,13 @@ public abstract class Enemy : MonoBehaviour
     public IEnumerator State_Move()
     {
         state = State.MOVE;
+        anim.SetTrigger("Enemy_Move");
         Vector3 dir = GameManager.Instance.core.transform.position - transform.position;
         dir.Normalize();
-        //ThisAnimator.SetTrigger((int)State.IDLE);
-
+        if (dir.x >= 1)//목표가 오른쪽에 있다고 판단
+            isSeeRight = true;
+        else
+            isSeeRight = false;
         while (state == State.MOVE)
         {
             //플레이어
@@ -72,6 +81,18 @@ public abstract class Enemy : MonoBehaviour
         yield break;
     }
 
+    public IEnumerator State_Damaged()
+    {
+        state = State.DAMAGED;
+        anim.SetTrigger("Enemy_Damaged");
+
+        while (state == State.DAMAGED)
+        {
+            yield return null;
+        }
+
+        yield break;
+    }
     public IEnumerator State_Stun(float second)
     {
         state = State.STUN;
@@ -117,6 +138,7 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual IEnumerator State_Attack()
     {
+        anim.SetTrigger("Enemy_Attack");
         yield break;
     }
 

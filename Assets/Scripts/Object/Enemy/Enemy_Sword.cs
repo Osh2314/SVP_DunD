@@ -22,13 +22,11 @@ public class Enemy_Sword : Enemy
         originalRotate = sword.transform.localEulerAngles;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+
 
     public override IEnumerator State_Attack()
     {
+        base.State_Attack();
         state = State.ATTACK;
         if (isAttacking == false)
         {

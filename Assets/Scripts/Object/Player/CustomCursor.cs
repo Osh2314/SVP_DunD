@@ -5,7 +5,9 @@ using UnityEngine;
 //마우스를 따라다닐 sprite컴포넌트가 있는 오브젝트 : Cursor
 public class CustomCursor : MonoBehaviour
 {
-    public Sprite idle_Crosshair;
+    public Texture2D idle_Crosshair;
+    [Header("빈 이미지의 커서크기 이미지를 할당")]
+    public Texture2D none_Crosshair;
     public enum State { Idle, Install}
     public State state = State.Idle;
     public Vector3 MouseConvertedpoint {
@@ -74,7 +76,9 @@ public class CustomCursor : MonoBehaviour
 
     public IEnumerator State_Idle() {
         state = State.Idle;
-        spriteRend.sprite = idle_Crosshair;
+        spriteRend.sprite = null;
+        Cursor.SetCursor(idle_Crosshair, new Vector2(256, 256), CursorMode.Auto);
+        //spriteRend.sprite = idle_Crosshair;
         spriteRend.color = new Color(255, 255, 255);
         Destroy(GetComponent<Collider2D>());
         Collider2D nowColl = gameObject.AddComponent<BoxCollider2D>();
@@ -85,7 +89,7 @@ public class CustomCursor : MonoBehaviour
     }
     public IEnumerator State_Install(GameObject objInfo) {
         state = State.Install;
-        
+        Cursor.SetCursor(none_Crosshair, new Vector2(256, 256), CursorMode.ForceSoftware);
         nowSelectObjInfo = objInfo;
         spriteRend.sprite = objInfo.GetComponent<SpriteRenderer>().sprite;
         Collider2D nowColl=CopyComponent<Collider2D>(objInfo.GetComponent<Collider2D>(), gameObject);

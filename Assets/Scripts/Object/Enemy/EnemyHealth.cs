@@ -9,6 +9,10 @@ public class EnemyHealth : MonoBehaviour
             return hp;
         }
         set {
+            if (hp > value)
+            {
+                StartCoroutine(GetComponent<Enemy>().State_Damaged());
+            }
             hp = value;
             if(Hp <= 0)
             {
