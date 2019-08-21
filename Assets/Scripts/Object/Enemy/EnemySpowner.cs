@@ -28,13 +28,11 @@ public class EnemySpowner : MonoBehaviour
     /// <returns></returns>
     public IEnumerator SpownEnemyWithRound(int wantRound)
     {
-        Debug.Log("EnemySpowner : 스폰 코루틴 시작!!");
         //스폰시간 간격을 두고 원하는 라운드의 Enemy프리팹을 하나씩 인스턴스화한다
         for (int i = 0; i < roundEnemyInfo[wantRound].spownEnemyPrefabs.Length; ++i)
         {
             
             Instantiate(roundEnemyInfo[wantRound].spownEnemyPrefabs[i], spownPlace.transform.position, Quaternion.identity);
-            Debug.Log("스폰!!"+(i+1).ToString());
             yield return new WaitForSeconds(spownIntervalTime);
         }
         yield break;

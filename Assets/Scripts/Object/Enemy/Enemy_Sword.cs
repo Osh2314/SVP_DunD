@@ -15,6 +15,7 @@ public class Enemy_Sword : Enemy
     public bool cool = true;
     public bool swordup = false;
     private Vector3 originalRotate;
+    
     // Start is called before the first frame update
     new void Start()
     {
@@ -26,8 +27,15 @@ public class Enemy_Sword : Enemy
 
     public override IEnumerator State_Attack()
     {
-        base.State_Attack();
+        Debug.Log("Attack!");
+        Vector3 dir = followTarget.transform.position - transform.position;
+        dir.Normalize();
+        if (dir.x > 0)//목표가 오른쪽에 있다고 판단
+            isSeeLeft = false;
+        else
+            isSeeLeft = true;
         state = State.ATTACK;
+        anim.SetTrigger("Enemy_Attack");
         if (isAttacking == false)
         {
             //StartCoroutine(Atk());
@@ -63,7 +71,7 @@ public class Enemy_Sword : Enemy
 
                 sword.transform.localEulerAngles = originalRotate;
 
-                yield return new WaitForSeconds(1f);
+                //yield return new WaitForSeconds(1f);
                 cool = true;
             }
             isAttacking = false;
@@ -72,49 +80,4 @@ public class Enemy_Sword : Enemy
         yield break;
     }
 
-    //public IEnumerator Atk()
-    //{
-    //    while (state == State.ATTACK)
-    //    {
-    //        string originalSwordTag = sword.tag;
-    //        sword.tag = swordTag;
-    //        while (cool == true)
-    //        {
-    //            if (swordup == true)
-    //            {
-    //                Debug.Log("업");
-    //                sword.transform.localEulerAngles += new Vector3(0, 0, attackAngle * Time.deltaTime);
-    //                if (sword.transform.localEulerAngles.z >= originalRotate.z)
-    //                {
-    //                    swordup = false;
-    //                    cool = false;
-    //                }
-    //            }
-    //            if (swordup == false)
-    //            {
-    //                Debug.Log("다운");
-    //                sword.transform.localEulerAngles += new Vector3(0, 0, attackAngle * Time.deltaTime * -1);
-    //                if(sword.transform.localEulerAngles.z <= attackAngleZ_Min)
-    //                {
-    //                    swordup = true;
-    //                }
-    //            }
-    //            yield return null;
-    //        }
-    //        sword.tag = originalSwordTag;
-    //        sword.transform.localEulerAngles = originalRotate;
-    //        //if(count >= 2)
-    //        //{
-    //        //    count--;
-    //        //    yield break;
-    //        //}
-    //        //else
-    //        //{
-    //        yield return new WaitForSeconds(1f);
-    //        cool = true;
-    //        //}
-    //        //Debug.Log(Time.realtimeSinceStartup + " || " + "현재 ATTACK상태");
-    //    }
-    //    yield break;
-    //}
 }

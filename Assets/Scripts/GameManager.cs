@@ -140,7 +140,6 @@ public class GameManager : MonoBehaviour
         //모든 적이 죽을 때까지 기다리고, 전부 죽었다면 다음라운드까지 대기시간을 적용하고, 라운드를 넘긴다
         while (true)
         {
-            Debug.Log("디펜스 시작!!");
             //모든 적들이 죽었다면
             if (nowDeadEnemyCount >= enemySpowner.roundEnemyInfo[nowRound].spownEnemyPrefabs.Length)
             {

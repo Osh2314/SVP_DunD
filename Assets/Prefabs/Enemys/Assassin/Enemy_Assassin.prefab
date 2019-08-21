@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 1463035112390889615}
   - component: {fileID: 1463035112390889614}
   - component: {fileID: 1463035112390889601}
-  - component: {fileID: 1463035112390889600}
   m_Layer: 8
   m_Name: Enemy_Assassin
   m_TagString: Enemy
@@ -212,7 +211,9 @@ MonoBehaviour:
   speed: 3
   spinforce: 10000
   dropGoldValue: 10
+  hp: 40
   state: 0
+  isSeeRight: 0
   Knife: {fileID: 8936827094054866678, guid: 05d00a191ee65734c84f9f92c54ef522, type: 3}
   Cut: {fileID: 8967367385279062361, guid: d6ac0ae550cf33d43856cdf425664104, type: 3}
   knifespeed: 1500
@@ -265,19 +266,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1463035112390889600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1463035112390889603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d7eb27ecf0d1c4082af2ecc40f6619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 20
 --- !u!1 &1463035112456953468
 GameObject:
   m_ObjectHideFlags: 0

@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 6300506671468012671}
   - component: {fileID: 6925631432949313441}
   - component: {fileID: 6300506671468012668}
-  - component: {fileID: 6300506671468012669}
   m_Layer: 8
   m_Name: Enemy_Archer
   m_TagString: Enemy
@@ -231,7 +230,9 @@ MonoBehaviour:
   speed: 3
   spinforce: 10000
   dropGoldValue: 10
+  hp: 40
   state: 0
+  isSeeRight: 0
   Arrow: {fileID: 5974642675958902613, guid: 45db9db78568d08458582970623d6923, type: 3}
   arrowspeed: 1500
   atkpoint: 0
@@ -261,16 +262,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6300506671468012669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6300506671468012642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d7eb27ecf0d1c4082af2ecc40f6619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 10

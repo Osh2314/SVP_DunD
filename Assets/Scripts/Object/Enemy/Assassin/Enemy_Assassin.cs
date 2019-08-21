@@ -38,9 +38,9 @@ public class Enemy_Assassin : Enemy
                 atkpoint--;
                 yield break;
             }
-            if (isThrowing == false) // 적이 일정범위 안에 있을때 바로 앞에 공격을 한다.
+            if (isThrowing == false) // 타겟이 일정범위 안에 있을때 바로 앞에 공격을 한다.
             {
-                if (gameObject.transform.position.x <= playerPos.x) // 적이 자신보다 오른쪽에 있을때
+                if (gameObject.transform.position.x <=followTarget.transform.position.x) // 타겟이 자신보다 오른쪽에 있을때
                 {
                     GameObject createdObject;
                     Rigidbody2D createdRigid;
@@ -48,7 +48,7 @@ public class Enemy_Assassin : Enemy
                     createdRigid = createdObject.GetComponent<Rigidbody2D>();
                     createdRigid.AddForce(new Vector2(cutspeed, 0));
                 }
-                else // 적이 자신보다 왼쪽에 있을때
+                else // 타겟이 자신보다 왼쪽에 있을때
                 {
                     GameObject createdObject;
                     Rigidbody2D createdRigid;
@@ -57,11 +57,11 @@ public class Enemy_Assassin : Enemy
                     createdRigid.AddForce(new Vector2(cutspeed * -1, 0));
                 }
             }
-            else //isThrowing이 true일때 (적이 일정범위 밖에 있을때 적에게 단검을 던진다)
+            else //isThrowing이 true일때 (타겟이 일정범위 밖에 있을때 타겟에게 단검을 던진다)
             {
                 GameObject createdObject;
                 Rigidbody2D createdRigid;
-                Vector2 lookDir = playerPos - transform.position;
+                Vector2 lookDir = followTarget.transform.position - transform.position;
                 lookDir.Normalize();
                 createdObject = Instantiate(Knife, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.FromToRotation(Vector3.right, lookDir));
                 createdRigid = createdObject.GetComponent<Rigidbody2D>();

@@ -38,7 +38,7 @@ public class Enemy_Archer : Enemy
             }
             GameObject createdObject;
             Rigidbody2D createdRigid;
-            Vector2 lookDir = playerPos - transform.position;
+            Vector2 lookDir = followTarget.transform.position - transform.position;
             lookDir.Normalize();
             createdObject = Instantiate(Arrow, new Vector3(transform.position.x + 0.3f, transform.position.y, transform.position.z), Quaternion.FromToRotation(Vector3.right, lookDir));
             createdRigid = createdObject.GetComponent<Rigidbody2D>();

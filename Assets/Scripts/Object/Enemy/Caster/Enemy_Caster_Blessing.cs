@@ -23,7 +23,7 @@ public class Enemy_Caster_Blessing : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+            Enemy enemyHealth = collision.gameObject.GetComponent<Enemy>();
             enemyHealth.Hp += healAmount;
         }
         if(collision.gameObject.tag == "Player")

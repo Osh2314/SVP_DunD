@@ -23,7 +23,7 @@ public class Trap_Thorn : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+            Enemy enemyHealth = collision.gameObject.GetComponent<Enemy>();
             enemyHealth.Hp -= damage;
             Enemy enemy = collision.GetComponent<Enemy>();
             enemy.StartCoroutine(enemy.Slow(second));

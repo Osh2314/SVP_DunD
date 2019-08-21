@@ -74,7 +74,6 @@
     <Compile Include="Assets\Scripts\Object\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Object\Enemy\Enemy_AttackObject.cs" />
     <Compile Include="Assets\Scripts\Object\Enemy\Enemy_Sword.cs" />
-    <Compile Include="Assets\Scripts\Object\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Object\Enemy\EnemySpowner.cs" />
     <Compile Include="Assets\Scripts\Object\Enemy\Range\AssassinRange.cs" />
     <Compile Include="Assets\Scripts\Object\Enemy\Range\AssassinRange2.cs" />

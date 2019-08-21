@@ -27,24 +27,16 @@ public class EnemyRange : MonoBehaviour
             if (collision.gameObject.tag == "Player")
             {
                 Vector3 colPos = collision.gameObject.transform.position;
-                enemy.GetPlayerPosition(colPos);
+                enemy.SetfollowTarget(collision.gameObject);
                 enemy.StartCoroutine(enemy.State_Attack());
             }
             else if(collision.gameObject.tag == "Core")
             {
                 Vector3 colPos = collision.gameObject.transform.position;
-                enemy.GetPlayerPosition(colPos);
+                enemy.SetfollowTarget(collision.gameObject);
                 enemy.StartCoroutine(enemy.State_Attack());
             }
 
-            //if (collision.gameObject.tag == "Enemy")
-            //{
-            //    Enemy enemy2 = collision.gameObject.GetComponent<Enemy>();
-            //    if (enemy.state == global::Enemy.State.MOVE && enemy2.state == global::Enemy.State.ATTACK)
-            //    {
-            //        enemy.StartCoroutine(enemy.State_Idle());
-            //    }
-            //}
         }
     }
 
@@ -52,14 +44,12 @@ public class EnemyRange : MonoBehaviour
     {
         Enemy enemy2 = collision.gameObject.GetComponent<Enemy>();
         // Debug.Log("Exit");
-        if ((collision.gameObject.tag == "Player" && enemy.state == global::Enemy.State.ATTACK || collision.gameObject.tag == "Core") && enemy.state == global::Enemy.State.ATTACK)
+        if ((collision.gameObject.tag == "Player"
+            || 
+            collision.gameObject.tag == "Core") && enemy.state == global::Enemy.State.ATTACK)
         {
+            enemy.SetfollowTarget(GameManager.Instance.core.gameObject);
             enemy.StartCoroutine(enemy.State_Move());
         }
-
-        //if (enemy2.state == global::Enemy.State.MOVE)
-        //{
-        //    enemy.StartCoroutine(enemy.State_Move());
-        //}
     }
 }

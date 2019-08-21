@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3719639792561802691}
   - component: {fileID: 3719639792561802689}
   - component: {fileID: 3719639792561802694}
-  - component: {fileID: 3719639792561802701}
   - component: {fileID: 41454394}
   - component: {fileID: 41454393}
   m_Layer: 8
@@ -123,26 +122,15 @@ MonoBehaviour:
   speed: 3
   spinforce: 10000
   dropGoldValue: 10
+  hp: 10
   state: 0
+  isSeeLeft: 1
   sword: {fileID: 3719639794423114151}
   attackAngle: 500
   attackAngleZ_Min: 240
   attackAngleZ_Max: 320
   cool: 1
   swordup: 0
---- !u!114 &3719639792561802701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3719639792561802695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75d7eb27ecf0d1c4082af2ecc40f6619, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 30
 --- !u!60 &41454394
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -321,7 +309,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.28
+  m_Radius: 0.93
 --- !u!114 &3719639793761415695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +334,7 @@ GameObject:
   - component: {fileID: 3719639794423114150}
   - component: {fileID: 3719639794423114144}
   - component: {fileID: 3719639794423114147}
+  - component: {fileID: 2043728133}
   m_Layer: 8
   m_Name: Sword
   m_TagString: Untagged
@@ -401,3 +390,51 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.21}
   m_Size: {x: 1, y: 0.5}
   m_Direction: 0
+--- !u!212 &2043728133
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3719639794423114151}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 4967ca893ebebce45850128b48ea65f7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.18431373}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.5, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0

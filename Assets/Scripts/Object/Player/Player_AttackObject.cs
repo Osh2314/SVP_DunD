@@ -17,7 +17,7 @@ public class Player_AttackObject: MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy" && canAttack==true)
         {
-            EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
+            Enemy enemyHealth = collision.gameObject.GetComponent<Enemy>();
             enemyHealth.Hp -= damage;
             if(willSuccessAttackDestroy==true)
                 Destroy(gameObject);
