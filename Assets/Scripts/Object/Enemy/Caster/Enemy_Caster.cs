@@ -5,7 +5,8 @@ using UnityEngine;
 public class Enemy_Caster : Enemy
 {
     public GameObject Blessing;
-    public int point = 0;
+
+    public bool isAttacking = false;
     // Start is called before the first frame update
     new void Start()
     {
@@ -16,26 +17,33 @@ public class Enemy_Caster : Enemy
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override IEnumerator State_Attack()
     {
         state = State.ATTACK;
-        point++;
-        while (state == State.ATTACK)
+        Vector3 dir = followTarget.transform.position - transform.position;
+        dir.Normalize();
+        if (dir.x > 0)//목표가 오른쪽에 있다고 판단
+            isSeeLeft = false;
+        else
+            isSeeLeft = true;
+
+        if (isAttacking == false)
         {
-            if (point >= 2)
+            anim.SetTrigger("Enemy_Attack");
+            //StartCoroutine(Atk());
+            isAttacking = true;
+
+            while (state == State.ATTACK)
             {
-               // Debug.Log("삭제");
-                point--;
-                yield break;
+                Instantiate(Blessing, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
+                yield return new WaitForSeconds(3f);
             }
-            Instantiate(Blessing, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
-            yield return new WaitForSeconds(3f);
-        }
-        point--;
+            isAttacking = false;
             yield break;
-    }
+        }
 
     }
+}
